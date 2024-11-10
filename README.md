@@ -1,6 +1,26 @@
-Next.js and Django Fullstack Airbnb Clone - React, Tailwind, Django Rest Framework and more
-[link to this tutorial](https://www.youtube.com/watch?v=AnhKSBTWCWc&list=PLpyspNLjzwBnP-906FBRP5qzB4YXjMvnT&index=1)
+## Tutorial Information
 
+Next.js and Django Fullstack Airbnb Clone - React, Tailwind, Django Rest Framework and more.
+
+
+
+Resources:
+
+Tutorial:
+
+1. Video: [Next.js and Django Fullstack Airbnb Clone](https://www.youtube.com/watch?v=AnhKSBTWCWc&list=PLpyspNLjzwBnP-906FBRP5qzB4YXjMvnT&index=1)
+
+2. Github: [SteinOveHelset/djangobnb](https://github.com/SteinOveHelset/djangobnb)
+
+
+
+icon: [heroicons](https://heroicons.com)
+
+icon - download [svgEpo](https://www.svgrepo.com/svg/532195/menu)
+
+Github: [ifrankxue/djangobnb](https://github.com/iFrankXue/djangobnb)
+
+---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
