@@ -17,7 +17,7 @@ const PropertyList = () => {
 
     const getProperties = async () => {
 
-        const tmpProperties = await apiService.get('/api/properties/')
+        const tmpProperties = await apiService.get('api/properties/')
 
         setProperties(tmpProperties.data);
 
