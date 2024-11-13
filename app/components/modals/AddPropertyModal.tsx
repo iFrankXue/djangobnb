@@ -19,6 +19,7 @@ const AddPropertyModal = () => {
     //
     // States
     const [currentStep, setCurrentStep] = useState(1);
+    const [errors, setErrors] = useState<string[]>([]);
     const [dataCategory, setDataCategory] = useState('');
     const [dataTitle, setDataTitle] = useState('');
     const [dataDescription, setDataDescription] = useState('');
@@ -86,6 +87,12 @@ const AddPropertyModal = () => {
                 addPropertyModal.close();
             } else {
                 console.log('Error');
+
+                const tmpErrors : string[] = Object.values(response).map((error: any) => {
+                    return error;
+                })
+
+                setErrors(tmpErrors)
             }
         } else {
             console.log('Error of information.');
@@ -134,17 +141,18 @@ const AddPropertyModal = () => {
                     </div>
                 </div>
 
+                <CustomButton
+                    label='Next'
+                    className='mb-2'
+                    onClick={() => setCurrentStep(3)}
+                />
                 
                 <CustomButton
                     label='Previous'
-                    className='mb-2 bg-black hover:bg-gray-800'
+                    className=' bg-black hover:bg-gray-800'
                     onClick={() => setCurrentStep(1)}
                 />                
 
-                <CustomButton
-                    label='Next'
-                    onClick={() => setCurrentStep(3)}
-                />
             </>
             ) : currentStep == 3 ? (
             <>
@@ -187,20 +195,19 @@ const AddPropertyModal = () => {
                             className='w-full p-4 border border-gray-600 rounded-xl'
                         />
                     </div>
-                    
-
                 </div>
 
                 <CustomButton
-                    label='Previous'
-                    className='mb-2 bg-black hover:bg-gray-800'
-                    onClick={() => setCurrentStep(2)}
-                />                
+                    label='Next'
+                    className='mb-2'
+                    onClick={() => setCurrentStep(4)}
+                />
 
                 <CustomButton
-                    label='Next'
-                    onClick={() => setCurrentStep(4)}
-                />                     
+                    label='Previous'
+                    className=' bg-black hover:bg-gray-800'
+                    onClick={() => setCurrentStep(2)}
+                />
             </>  
             ) : currentStep == 4 ? (
             <>
@@ -214,14 +221,15 @@ const AddPropertyModal = () => {
                 </div>
 
                 <CustomButton
-                    label='Previous'
-                    className='mb-2 bg-black hover:bg-gray-800'
-                    onClick={() => setCurrentStep(3)}
-                />                
+                    label='Next'
+                    className='mb-2'
+                    onClick={() => setCurrentStep(5)}
+                />
 
                 <CustomButton
-                    label='Next'
-                    onClick={() => setCurrentStep(5)}
+                    label='Previous'
+                    className=' bg-black hover:bg-gray-800'
+                    onClick={() => setCurrentStep(3)}
                 />
             </>
             ) : (
@@ -250,16 +258,27 @@ const AddPropertyModal = () => {
                     )}
                 </div>
 
-
-                <CustomButton
-                    label='Previous'
-                    className='mb-2 bg-black hover:bg-gray-800'
-                    onClick={() => setCurrentStep(4)}
-                />                
+                {errors.map((error, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className='p-5 mb-4 bg-airbnb text-white rounded-xl opacity-80'
+                        >
+                            {error}
+                        </div>
+                    )
+                })}
 
                 <CustomButton
                     label='Submit'
-                    onClick={() => console.log('Submit')}
+                    className='mb-2'
+                    onClick={submitForm}
+                />
+
+                <CustomButton
+                    label='Previous'
+                    className=' bg-black hover:bg-gray-800'
+                    onClick={() => setCurrentStep(4)}
                 />
             </>
             )}

@@ -16,12 +16,26 @@ const PropertyList = () => {
     const [properties, setProperties] = useState<PropertyType[]>([]);
 
     const getProperties = async () => {
+        try {
+            const tmpProperties = await apiService.getWithoutToken('api/properties/');
+            if (Array.isArray(tmpProperties.data)) {
+                setProperties(tmpProperties.data);
+            } else {
+                console.warn('Unexpected data format:', tmpProperties);
+                setProperties([]);
+            }
+        } catch (error) {
+            console.error('Failed to load properties:', error);
+            setProperties([]);
+        }
+    };
 
-        const tmpProperties = await apiService.get('api/properties/')
+    // const getProperties = async () => {
 
-        setProperties(tmpProperties.data);
+    //     const tmpProperties = await apiService.get('api/properties/')
 
-    }
+    //     setProperties(tmpProperties.data);
+    // }
 
     useEffect(() => {
         getProperties();
@@ -29,16 +43,18 @@ const PropertyList = () => {
 
     return (
         <>
-        {properties.map((property) => {
-            return (
+        {properties.length > 0 ? (
+            properties.map((property) => (
                 <PropertyListItem 
                     key={property.id}
                     property={property}
                 />
-            )
-        })}
+            ))
+        ) : (
+            <p>Loading properties or no properties available...</p>
+        )}
         </>
-    )
-}
+    );
+};
 
 export default PropertyList
