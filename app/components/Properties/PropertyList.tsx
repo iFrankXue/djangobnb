@@ -17,7 +17,7 @@ const PropertyList = () => {
 
     const getProperties = async () => {
         try {
-            const tmpProperties = await apiService.getWithoutToken('api/properties/');
+            const tmpProperties = await apiService.get('api/properties/');
             if (Array.isArray(tmpProperties.data)) {
                 setProperties(tmpProperties.data);
             } else {

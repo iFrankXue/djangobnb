@@ -88,7 +88,7 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
 
 
     const getReservations = async () => {
-        const reservations = await apiService.getWithoutToken(`api/properties/${property.id}/reservations/`)
+        const reservations = await apiService.get(`api/properties/${property.id}/reservations/`)
 
         let dates: Date[] = [];
         reservations.forEach((reservation: any) => {
@@ -96,7 +96,7 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
                 start: new Date(reservation.start_date),
                 end: new Date(reservation.end_date),
             });
-            dates = [...dates, ...range]
+            dates = [...dates, ...range];
         });
 
         setBookedDates(dates)
